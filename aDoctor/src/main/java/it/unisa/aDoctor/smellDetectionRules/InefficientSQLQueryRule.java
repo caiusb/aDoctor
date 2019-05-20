@@ -3,7 +3,7 @@ package it.unisa.aDoctor.smellDetectionRules;
 import it.unisa.aDoctor.beans.ClassBean;
 import it.unisa.aDoctor.beans.MethodBean;
 
-public class InefficientSQLQueryRule {
+public class InefficientSQLQueryRule implements ClassRule {
 
     public boolean isInefficientSQLQuery(ClassBean pClass) {
 
@@ -19,5 +19,15 @@ public class InefficientSQLQueryRule {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean hasSmell(ClassBean c) {
+        return isInefficientSQLQuery(c);
+    }
+
+    @Override
+    public String getName() {
+        return "ISQLQ";
     }
 }

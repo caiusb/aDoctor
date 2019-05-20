@@ -4,7 +4,7 @@ import it.unisa.aDoctor.beans.ClassBean;
 import it.unisa.aDoctor.beans.MethodBean;
 import it.unisa.aDoctor.beans.InstanceVariableBean;
 
-public class InternalGetterSetterRule {
+public class InternalGetterSetterRule implements ClassRule {
 
     public boolean isInternalGetterSetter(ClassBean pClass) {
         for (MethodBean method : pClass.getMethods()) {
@@ -55,4 +55,13 @@ public class InternalGetterSetterRule {
         return false;
     }
 
+    @Override
+    public boolean hasSmell(ClassBean c) {
+        return isInternalGetterSetter(c);
+    }
+
+    @Override
+    public String getName() {
+        return "IGS";
+    }
 }

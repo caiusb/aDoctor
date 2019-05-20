@@ -46,7 +46,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>it.unisa.aDoctor.ui.MainUI</mainClass>
+                            <mainClass>it.unisa.aDoctor.process.RunAndroidSmellDetection</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

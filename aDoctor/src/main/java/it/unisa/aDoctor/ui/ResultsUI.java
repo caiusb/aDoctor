@@ -139,7 +139,7 @@ public class ResultsUI extends javax.swing.JFrame {
             new Object [][] {
 
             },
-            RunAndroidSmellDetection.FILE_HEADER
+            RunAndroidSmellDetection.CLASS_FILE_HEADER
         ) {
             Class[] types = TABLE_TYPES;
 

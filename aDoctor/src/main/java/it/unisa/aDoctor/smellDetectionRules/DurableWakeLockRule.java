@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import it.unisa.aDoctor.beans.ClassBean;
 import it.unisa.aDoctor.beans.MethodBean;
 
-public class DurableWakeLockRule {
+public class DurableWakeLockRule implements ClassRule {
 
     public boolean isDurableWakeLock(ClassBean pClass) {
 
@@ -21,4 +21,13 @@ public class DurableWakeLockRule {
 
     }
 
+    @Override
+    public boolean hasSmell(ClassBean c) {
+        return isDurableWakeLock(c);
+    }
+
+    @Override
+    public String getName() {
+        return "DW";
+    }
 }

@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class UnclosedCloseableRule {
+public class UnclosedCloseableRule implements ClassRule {
 
     private final List<String> closeableClassList;
 
@@ -63,4 +63,13 @@ public class UnclosedCloseableRule {
         return false;
     }
 
+    @Override
+    public boolean hasSmell(ClassBean c) {
+        return isUnclosedCloseable(c);
+    }
+
+    @Override
+    public String getName() {
+        return "UC";
+    }
 }

@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import it.unisa.aDoctor.beans.ClassBean;
 
-public class InefficientDataStructureRule {
+public class InefficientDataStructureRule implements ClassRule {
 
     public boolean isInefficientDataStructure(ClassBean pClass) {
 
@@ -14,4 +14,13 @@ public class InefficientDataStructureRule {
         return regexMatcher.find();
     }
 
+    @Override
+    public boolean hasSmell(ClassBean c) {
+        return isInefficientDataStructure(c);
+    }
+
+    @Override
+    public String getName() {
+        return "IDS";
+    }
 }

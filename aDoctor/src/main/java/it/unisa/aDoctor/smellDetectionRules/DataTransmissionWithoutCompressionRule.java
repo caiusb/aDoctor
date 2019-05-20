@@ -1,12 +1,10 @@
 package it.unisa.aDoctor.smellDetectionRules;
 
-import java.io.IOException;
-
 import it.unisa.aDoctor.beans.ClassBean;
 
-public class DataTransmissionWithoutCompressionRule {
+public class DataTransmissionWithoutCompressionRule implements ClassRule {
 
-    public boolean isDataTransmissionWithoutCompression(ClassBean pClassBean) throws IOException {
+    public boolean isDataTransmissionWithoutCompression(ClassBean pClassBean) {
 
         if (pClassBean.getTextContent().contains("File ")) {
             if (!pClassBean.getTextContent().contains("zip")) {
@@ -15,5 +13,15 @@ public class DataTransmissionWithoutCompressionRule {
         }
 
         return false;
+    }
+
+    @Override
+    public boolean hasSmell(ClassBean c) {
+        return isDataTransmissionWithoutCompression(c);
+    }
+
+    @Override
+    public String getName() {
+        return "DTWC";
     }
 }

@@ -10,7 +10,7 @@ import it.unisa.aDoctor.beans.ClassBean;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class NoLowMemoryResolverRule {
+public class NoLowMemoryResolverRule implements ClassRule {
 
     private final List<String> onLowMemoryClassList;
 
@@ -50,7 +50,7 @@ public class NoLowMemoryResolverRule {
      * @param pClass
      * @return boolean
      */
-    public boolean inheritsOnLowMemoryMethod(ClassBean pClass) {
+    private boolean inheritsOnLowMemoryMethod(ClassBean pClass) {
 
         if (pClass.getSuperclass() != null) {
             for (String className : onLowMemoryClassList) {
@@ -62,4 +62,13 @@ public class NoLowMemoryResolverRule {
         return false;
     }
 
+    @Override
+    public boolean hasSmell(ClassBean c) {
+        return isNoLowMemoryResolver(c);
+    }
+
+    @Override
+    public String getName() {
+        return "NLMR";
+    }
 }
